@@ -1,8 +1,14 @@
 import React from "react";
 import "./app.css";
+import Main from "./components/main";
+import SignUp from "./components/signUp";
 
 function App() {
-  return <h1>Hello :)</h1>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
 
 export default App;
