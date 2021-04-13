@@ -12,7 +12,10 @@ class Header extends PureComponent {
         <nav>
           <ul>
             <li>
-              <a href="">스터디 생성</a>
+              <a href="">스터디 목록</a>
+            </li>
+            <li>
+              <a href="">스터디 만들기</a>
             </li>
             <li>
               <a href="">로그인</a>
