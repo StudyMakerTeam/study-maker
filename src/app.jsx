@@ -1,12 +1,12 @@
 import React from "react";
-import "./app.css";
-import Main from "./components/main";
-import SignUp from "./components/signUp";
+import styles from "./app.module.css";
+import Main from "./components/mainPreview/mainPreview";
+import SignUp from "./components/signUp/signUp";
 
 function App() {
   return (
     <>
-      <Main />
+      <SignUp />
     </>
   );
 }

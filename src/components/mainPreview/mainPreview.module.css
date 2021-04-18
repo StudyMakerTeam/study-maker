@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-gap: 2rem;
+  place-items: center;
+  margin-top: 30px;
+}
+
+.category {
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.viewMore {
+  font-size: 14px;
+}

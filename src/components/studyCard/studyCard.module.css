@@ -1,0 +1,29 @@
+.studyCard {
+  border: 1px solid #ededed;
+  border-radius: 5px;
+}
+
+.thumbnail {
+  border-radius: 5px 5px 0 0;
+}
+
+.detail {
+  padding: 5px 10px 20px 10px;
+}
+
+.name {
+  font-size: 15px;
+  color: #3c91e6;
+  font-weight: bold;
+}
+
+.summary {
+  font-size: 12px;
+  color: #767676;
+  margin-bottom: 20px;
+}
+
+.env {
+  font-size: 11px;
+  color: #767676;
+}

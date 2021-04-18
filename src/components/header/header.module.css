@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+  box-shadow: 0 2px 5px 0 #dbdbdb;
+}
+
+.logo {
+  color: #3c91e6;
+  font-size: 18px;
+}
+
+.nav {
+  width: 300px;
+  height: 100%;
+}
+
+.navList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navListItem {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navText {
+  font-size: 1rem;
+  font-weight: 500;
+}

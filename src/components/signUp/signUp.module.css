@@ -1,0 +1,78 @@
+.container {
+  display: grid;
+  grid-gap: 2.5rem;
+  place-items: center;
+  margin-top: 30px;
+}
+
+.title {
+  margin-right: 210px;
+}
+
+.form {
+  display: grid;
+  grid-row-gap: 0.5rem;
+}
+
+label {
+  font-size: 15px;
+}
+
+.form > div {
+  display: grid;
+  grid-gap: 5px;
+}
+
+.input {
+  border: 0.7px solid #ededed;
+  border-radius: 5px;
+  padding: 10px 80px 10px 8px;
+  color: #000;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 13px;
+}
+
+.noError {
+  opacity: 0;
+  font-size: 13px;
+}
+
+.doubleCheck {
+  border: 0.7px solid #3c91e6;
+  border-radius: 3px;
+  margin-left: 5px;
+  background: none;
+  font-size: 12px;
+  padding: 10px 5px;
+  color: #3c91e6;
+  cursor: pointer;
+}
+
+#buttons {
+  display: inline-block;
+  text-align: center;
+}
+
+#buttons button {
+  border: 0.7px solid #3c91e6;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+#backButton {
+  background: none;
+  margin-right: 8px;
+  color: #3c91e6;
+}
+
+#signUpButton {
+  background: #3c91e6;
+  margin-left: 8px;
+  color: #fff;
+  box-shadow: 0 3px 7px 0 #dbdbdb;
+}

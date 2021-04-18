@@ -1,9 +1,10 @@
 import React from "react";
-import StudyCard from "./studyCard";
+import StudyCard from "../studyCard/studyCard";
+import styles from "./studyList.module.css";
 
 const StudyCardList = () => {
   return (
-    <div className="studyCardList">
+    <div className={styles.studyCards}>
       <StudyCard />
       <StudyCard />
       <StudyCard />
