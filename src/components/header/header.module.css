@@ -11,6 +11,7 @@
 #logo {
   color: #3c91e6;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .nav {
@@ -29,9 +30,18 @@
   height: 100%;
   display: flex;
   align-items: center;
-}
-
-.navText {
   font-size: 1rem;
   font-weight: 500;
+  color: #767676;
+  cursor: pointer;
+}
+
+.navListItem:link,
+.navListItem:visited {
+  color: #767676;
+}
+
+.navListItem:hover,
+.navListItem:active {
+  color: #3c91e6;
 }

@@ -9,22 +9,14 @@ const MainPreview = () => {
         <div className={styles.category}>
           <div className={styles.categoryTitle}>
             <h3>오프라인</h3>
-            <p>
-              <a href="#" className={styles.viewMore}>
-                전체보기
-              </a>
-            </p>
+            <p className={styles.viewMore}>전체보기</p>
           </div>
           <StudyCardList />
         </div>
         <div className={styles.category}>
           <div className={styles.categoryTitle}>
             <h3>온라인</h3>
-            <p>
-              <a href="#" className={styles.viewMore}>
-                전체보기
-              </a>
-            </p>
+            <p className={styles.viewMore}>전체보기</p>
           </div>
           <StudyCardList />
         </div>

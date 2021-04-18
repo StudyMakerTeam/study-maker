@@ -10,11 +10,20 @@
   padding: 0 6rem;
 }
 
-.nav {
+.navItem {
   display: inline-block;
   padding: 0 5px;
+  font-size: 0.8rem;
+  color: #767676;
+  cursor: pointer;
 }
 
-.navText {
-  font-size: 0.8rem;
+.navItem:link,
+.navItem:visited {
+  color: #767676;
+}
+
+.navItem:hover,
+.navItem:active {
+  color: #3c91e6;
 }
