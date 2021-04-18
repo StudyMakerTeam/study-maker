@@ -60,7 +60,7 @@ header {
 }
 
 header > nav {
-  width: 180px;
+  width: 300px;
   height: 100%;
 }
 
@@ -79,6 +79,7 @@ header ul > li {
 
 header ul > li > a {
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .form {
