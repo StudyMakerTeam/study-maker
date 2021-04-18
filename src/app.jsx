@@ -7,11 +7,11 @@ import SignUp from "./components/signUp/signUp";
 
 function App() {
   return (
-    <body>
+    <>
       <Header />
       <MainPreview />
       <Footer />
-    </body>
+    </>
   );
 }
 
