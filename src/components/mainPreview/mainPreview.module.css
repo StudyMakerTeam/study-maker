@@ -5,6 +5,16 @@
   margin-top: 60px;
 }
 
+.mainImage {
+  text-align: center;
+}
+
+.image {
+  width: inherit;
+  max-width: 80%;
+  height: auto;
+}
+
 .category {
   display: grid;
   grid-gap: 1.5rem;
