@@ -1,23 +1,25 @@
 import React, { useCallback, useState } from "react";
 import styles from "./signIn.module.css";
 import { Link } from "react-router-dom";
+import Modal from "../modal/modal.jsx";
+import FindEmail from "../signIn/findEmail";
+import FindPassword from "./findPassword";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
+  const [passwordModalOpen, setPasswordModalOpen] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!isEmail(email)) {
-      return setEmailError(true);
-    }
     console.log(email, password);
   };
 
   const onChangeEmail = useCallback((e) => {
     setEmailError(!isEmail(e.target.value));
-    setEmail(e.target.email);
+    setEmail(e.target.value);
   }, []);
 
   const onChangePassword = useCallback((e) => {
@@ -25,9 +27,23 @@ const SignIn = () => {
   }, []);
 
   const isEmail = (email) => {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
+    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+    return regExp.test(email);
+  };
+
+  const openEmailModal = () => {
+    setEmailModalOpen(true);
+  };
+  const closeEmailModal = () => {
+    setEmailModalOpen(false);
+  };
+
+  const openPasswordModal = () => {
+    setPasswordModalOpen(true);
+  };
+  const closePasswordModal = () => {
+    setPasswordModalOpen(false);
   };
 
   return (
@@ -59,12 +75,13 @@ const SignIn = () => {
               type="password"
               placeholder="비밀번호"
               name="user-password"
+              onChange={onChangePassword}
             />
             <div className={styles.noError}>no error</div>
           </div>
           <div id={styles.buttons}>
             <button
-              id={styles.signUpButton}
+              id={styles.signInButton}
               htmltype="submt"
               onSubmit={onSubmit}
             >
@@ -72,7 +89,21 @@ const SignIn = () => {
             </button>
           </div>
         </form>
-        <div>이메일 찾기 | 비밀번호 찾기</div>
+        <div>
+          <button className={styles.findInfo} onClick={openEmailModal}>
+            이메일 찾기
+          </button>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <button className={styles.findInfo} onClick={openPasswordModal}>
+            비밀번호 찾기
+          </button>
+        </div>
+        <Modal open={emailModalOpen} close={closeEmailModal}>
+          <FindEmail />
+        </Modal>
+        <Modal open={passwordModalOpen} close={closePasswordModal}>
+          <FindPassword />
+        </Modal>
         <div>
           스터디메이커가 처음이신가요? <Link to="/signup">회원가입</Link>
         </div>

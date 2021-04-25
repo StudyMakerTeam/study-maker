@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./signUp.module.css";
 
 const SignUp = () => {
@@ -11,21 +12,13 @@ const SignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!isEmail(email)) {
-      return setEmailError(true);
-    }
-    if (password.length < 8) {
-      return setPasswordLengthError(true);
-    }
-    if (password !== passwordCheck) {
-      return setPasswordError(true);
-    }
-    console.log(email, password, passwordCheck, name, nickname);
+    alert("회원가입이 완료되었습니다.");
+    window.location.href = "/";
   };
 
   const onChangeEmail = useCallback((e) => {
     setEmailError(!isEmail(e.target.value));
-    setEmail(e.target.email);
+    setEmail(e.target.value);
   }, []);
 
   const onChangePassword = useCallback((e) => {
@@ -42,9 +35,9 @@ const SignUp = () => {
   );
 
   const isEmail = (email) => {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
+    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+    return regExp.test(email);
   };
 
   const useInput = (initValue = null) => {
@@ -154,7 +147,9 @@ const SignUp = () => {
             </div>
           </div>
           <div id={styles.buttons}>
-            <button id={styles.backButton}>돌아가기</button>
+            <Link to="/">
+              <button id={styles.backButton}>돌아가기</button>
+            </Link>
             <button
               id={styles.signUpButton}
               htmltype="submt"

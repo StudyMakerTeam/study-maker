@@ -17,3 +17,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+button {
+  border: none;
+  background: #fff;
+}

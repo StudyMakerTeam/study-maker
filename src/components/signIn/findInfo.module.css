@@ -1,53 +1,52 @@
 .container {
   display: grid;
-  grid-gap: 2.5rem;
+  grid-gap: 1rem;
   place-items: center;
-  margin-top: 30px;
-}
-
-.title {
-  margin-right: 210px;
+  margin-bottom: 30px;
 }
 
 .form {
   display: grid;
-  grid-row-gap: 0.5rem;
+  grid-row-gap: 1rem;
+  place-items: center;
+}
+
+.form > p {
+  font-size: 14px;
+}
+
+.accent {
+  color: #3c91e6;
+  font-weight: 500;
 }
 
 .form > div {
   display: grid;
-  grid-gap: 5px;
+  grid-gap: 10px;
 }
 
 .input {
+  width: 280px;
   border: 0.7px solid #ededed;
   border-radius: 5px;
-  padding: 10px 80px 10px 8px;
+  padding: 10px;
   color: #000;
-}
-
-#buttons {
-  display: inline-block;
-  text-align: center;
+  font-size: 15px;
 }
 
 #buttons button {
   border: 0.7px solid #3c91e6;
+  width: 258px;
   border-radius: 3px;
   font-size: 15px;
   padding: 10px 40px;
   cursor: pointer;
-}
-
-#backButton {
-  background: none;
-  margin-right: 8px;
   color: #3c91e6;
+  background: #fff;
+  box-shadow: 0 3px 7px 0 #dbdbdb;
 }
 
-#signUpButton {
+#buttons button:hover {
   background: #3c91e6;
-  margin-left: 8px;
   color: #fff;
-  box-shadow: 0 3px 7px 0 #dbdbdb;
 }

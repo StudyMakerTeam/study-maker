@@ -70,9 +70,20 @@ label {
   color: #3c91e6;
 }
 
-#signUpButton {
+#signInButton {
   background: #3c91e6;
   margin-left: 8px;
   color: #fff;
   box-shadow: 0 3px 7px 0 #dbdbdb;
+}
+
+.findInfo {
+  cursor: pointer;
+}
+
+.findInfo:link,
+.findInfo:visited,
+.findInfo:hover,
+.findInfo:active {
+  color: #3c91e6;
 }
