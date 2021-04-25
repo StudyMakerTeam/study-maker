@@ -25,7 +25,7 @@ label {
 
 .input {
   font-size: 15px;
-  border: 0.7px solid #bdbdbd;
+  border: 0.7px solid #a6a3a3;
   border-radius: 5px;
   padding: 10px;
   width: 400px;
@@ -34,15 +34,11 @@ label {
 
 .inputSmall {
   font-size: 15px;
-  border: 0.7px solid #bdbdbd;
+  border: 0.7px solid #a6a3a3;
   border-radius: 5px;
   padding: 10px;
-  width: 340px;
+  width: 330px;
   color: #000;
-}
-
-.mobile {
-  font-size: 15px;
 }
 
 .errorMessage {
@@ -60,7 +56,7 @@ label {
   border-radius: 3px;
   margin-left: 5px;
   background: none;
-  font-size: 12px;
+  font-size: 15px;
   padding: 10px 5px;
   color: #3c91e6;
   cursor: pointer;

@@ -75,11 +75,10 @@ const SignIn = () => {
             </button>
           </div>
         </form>
-        <div>
+        <div className={styles.findInfoMenu}>
           <button className={styles.findInfo} onClick={openEmailModal}>
-            이메일 찾기
+            이메일 찾기&nbsp;&nbsp;|&nbsp;&nbsp;
           </button>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
           <button className={styles.findInfo} onClick={openPasswordModal}>
             비밀번호 찾기
           </button>
@@ -90,8 +89,11 @@ const SignIn = () => {
         <Modal open={passwordModalOpen} close={closePasswordModal}>
           <FindPassword />
         </Modal>
-        <div>
-          스터디메이커가 처음이신가요? <Link to="/signup">회원가입</Link>
+        <div className={styles.signUpQuest}>
+          스터디메이커가 처음이신가요?{" "}
+          <Link to="/signup">
+            <span className={styles.signUp}>회원가입</span>
+          </Link>
         </div>
       </div>
     </>

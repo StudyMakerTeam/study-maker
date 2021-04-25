@@ -1,17 +1,12 @@
 .container {
   display: grid;
-  grid-gap: 2.5rem;
   place-items: center;
-  margin-top: 30px;
-}
-
-.title {
-  margin-right: 210px;
+  margin-top: 80px;
+  grid-template-rows: 50px 200px 0px 100px;
 }
 
 .form {
   display: grid;
-  grid-row-gap: 0.5rem;
 }
 
 label {
@@ -24,9 +19,11 @@ label {
 }
 
 .input {
-  border: 0.7px solid #ededed;
+  font-size: 15px;
+  border: 0.7px solid #a6a3a3;
   border-radius: 5px;
-  padding: 10px 80px 10px 8px;
+  padding: 10px;
+  width: 300px;
   color: #000;
 }
 
@@ -40,50 +37,43 @@ label {
   font-size: 13px;
 }
 
-.doubleCheck {
-  border: 0.7px solid #3c91e6;
-  border-radius: 3px;
-  margin-left: 5px;
-  background: none;
-  font-size: 12px;
-  padding: 10px 5px;
-  color: #3c91e6;
-  cursor: pointer;
-}
-
 #buttons {
   display: inline-block;
   text-align: center;
 }
 
-#buttons button {
-  border: 0.7px solid #3c91e6;
-  border-radius: 3px;
-  font-size: 15px;
-  padding: 10px 40px;
-  cursor: pointer;
-}
-
-#backButton {
-  background: none;
-  margin-right: 8px;
-  color: #3c91e6;
-}
-
 #signInButton {
+  font-size: 15px;
+  padding: 10px;
+  width: 300px;
+  cursor: pointer;
   background: #3c91e6;
-  margin-left: 8px;
   color: #fff;
   box-shadow: 0 3px 7px 0 #dbdbdb;
 }
 
+.findInfoMenu {
+  margin-left: 140px;
+}
+
 .findInfo {
   cursor: pointer;
+  color: #7e7e7e;
 }
 
 .findInfo:link,
 .findInfo:visited,
 .findInfo:hover,
 .findInfo:active {
+  color: #3c91e6;
+}
+
+.signUpQuest {
+  color: #7e7e7e;
+}
+
+.signUp {
+  text-decoration: underline;
+  font-weight: 700;
   color: #3c91e6;
 }

@@ -168,9 +168,7 @@ const SignUp = () => {
                 required
                 onChange={onChangeNickname}
               />
-              <button className={styles.doubleCheck} type="submit">
-                중복확인
-              </button>
+              <button className={styles.doubleCheck}>중복확인</button>
               <div className={styles.noError}>no error</div>
             </div>
           </div>
