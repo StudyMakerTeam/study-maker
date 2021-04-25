@@ -1,5 +1,6 @@
 import React from "react";
-import StudyCardList from "../studyList/studyList";
+import StudyCardOffline from "../studyCard/studyCardOffline";
+import StudyCardOnline from "../studyCard/studyCardOnline";
 import styles from "./mainPreview.module.css";
 
 const MainPreview = () => {
@@ -8,17 +9,45 @@ const MainPreview = () => {
       <div className={styles.container}>
         <div className={styles.category}>
           <div className={styles.categoryTitle}>
-            <h3>오프라인</h3>
+            <h2>온라인</h2>
             <p className={styles.viewMore}>전체보기</p>
           </div>
-          <StudyCardList />
+          <div className={styles.studyCards}>
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+            <StudyCardOnline />
+          </div>
         </div>
+      </div>
+      <div className={styles.container}>
         <div className={styles.category}>
           <div className={styles.categoryTitle}>
-            <h3>온라인</h3>
+            <h2>오프라인</h2>
             <p className={styles.viewMore}>전체보기</p>
           </div>
-          <StudyCardList />
+          <div className={styles.studyCards}>
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+            <StudyCardOffline />
+          </div>
         </div>
       </div>
     </>

@@ -1,30 +1,57 @@
 .studyCard {
-  border: 1px solid #ededed;
   border-radius: 5px;
-}
-
-.thumbnail {
-  border-radius: 5px 5px 0 0;
+  box-shadow: 0 1px 5px 0 #dbdbdb;
 }
 
 .detail {
-  padding: 20px 100px 20px 10px;
+  padding: 10px;
+  width: 270px;
+}
+
+.detail > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .name {
   font-size: 18px;
-  margin-bottom: 5px;
   color: #3c91e6;
   font-weight: 500;
+}
+
+.online {
+  background-color: #2ec4b6;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  height: 100%;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.offline {
+  background-color: #a45de3;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  height: 100%;
+  padding: 3px 5px;
+  border-radius: 3px;
 }
 
 .summary {
   font-size: 12px;
   color: #767676;
-  margin-bottom: 100px;
+  margin-bottom: 15px;
+}
+
+.startDay {
+  font-size: 12px;
+  color: #767676;
 }
 
 .env {
-  font-size: 12px;
   color: #767676;
+  font-size: 14px;
 }
