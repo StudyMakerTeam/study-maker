@@ -8,7 +8,6 @@ import FindPassword from "./findPassword";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
 
@@ -18,19 +17,12 @@ const SignIn = () => {
   };
 
   const onChangeEmail = useCallback((e) => {
-    setEmailError(!isEmail(e.target.value));
     setEmail(e.target.value);
   }, []);
 
   const onChangePassword = useCallback((e) => {
     setPassword(e.target.value);
   }, []);
-
-  const isEmail = (email) => {
-    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
-    return regExp.test(email);
-  };
 
   const openEmailModal = () => {
     setEmailModalOpen(true);
@@ -60,13 +52,7 @@ const SignIn = () => {
                 required
                 onChange={onChangeEmail}
               />
-              {emailError ? (
-                <div className={styles.errorMessage}>
-                  올바르지 않은 이메일 형식입니다.
-                </div>
-              ) : (
-                <div className={styles.noError}>no error</div>
-              )}
+              <div className={styles.noError}>no error</div>
             </div>
           </div>
           <div>

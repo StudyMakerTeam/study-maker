@@ -2,16 +2,16 @@
   display: grid;
   grid-gap: 2.5rem;
   place-items: center;
-  margin-top: 30px;
+  margin-top: 80px;
 }
 
 .title {
-  margin-right: 210px;
+  margin-right: 325px;
 }
 
 .form {
   display: grid;
-  grid-row-gap: 0.5rem;
+  grid-row-gap: 0.8rem;
 }
 
 label {
@@ -24,10 +24,25 @@ label {
 }
 
 .input {
-  border: 0.7px solid #ededed;
+  font-size: 15px;
+  border: 0.7px solid #bdbdbd;
   border-radius: 5px;
-  padding: 10px 80px 10px 8px;
+  padding: 10px;
+  width: 400px;
   color: #000;
+}
+
+.inputSmall {
+  font-size: 15px;
+  border: 0.7px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 340px;
+  color: #000;
+}
+
+.mobile {
+  font-size: 15px;
 }
 
 .errorMessage {
@@ -61,6 +76,7 @@ label {
   border-radius: 3px;
   font-size: 15px;
   padding: 10px 40px;
+  width: 190px;
   cursor: pointer;
 }
 

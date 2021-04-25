@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./signUp.module.css";
 
@@ -6,6 +6,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
+  const [mobile, setMobile] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
@@ -34,9 +35,26 @@ const SignUp = () => {
     [password]
   );
 
+  const onChangeMobile = useCallback((e) => {
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) {
+      setMobile(e.target.value);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mobile.length === 10) {
+      setMobile(mobile.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+    if (mobile.length === 13) {
+      setMobile(
+        mobile.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [mobile]);
+
   const isEmail = (email) => {
     const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
     return regExp.test(email);
   };
 
@@ -60,16 +78,14 @@ const SignUp = () => {
             <label htmlFor="user-email">이메일</label>
             <div>
               <input
-                className={styles.input}
+                className={styles.inputSmall}
                 placeholder="이메일 주소"
                 name="user-email"
                 value={email}
                 required
                 onChange={onChangeEmail}
               />
-              <button className={styles.doubleCheck} type="submit">
-                중복확인
-              </button>
+              <button className={styles.doubleCheck}>중복확인</button>
               {emailError ? (
                 <div className={styles.errorMessage}>
                   올바르지 않은 이메일 형식입니다.
@@ -118,6 +134,18 @@ const SignUp = () => {
             )}
           </div>
           <div>
+            <label htmlFor="user-mobile">휴대전화</label>
+            <input
+              className={styles.input}
+              placeholder="전화번호 입력('-' 제외)"
+              name="user-mobile"
+              value={mobile}
+              required
+              onChange={onChangeMobile}
+            />
+            <div className={styles.noError}>no error</div>
+          </div>
+          <div>
             <label htmlFor="user-name">이름</label>
             <input
               className={styles.input}
@@ -133,7 +161,7 @@ const SignUp = () => {
             <label htmlFor="user-nickname">닉네임</label>
             <div>
               <input
-                className={styles.input}
+                className={styles.inputSmall}
                 placeholder="닉네임(별명)"
                 name="user-nickname"
                 value={nickname}
