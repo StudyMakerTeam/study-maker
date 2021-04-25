@@ -7,9 +7,8 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={Main} />
-      <Route path="/signIn" component={SignIn} />
-      <Route path="/signUp" component={SignUp} />
-      <Route render={() => <div className="error">에러 페이지</div>} />
+      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
     </Router>
   );
 }

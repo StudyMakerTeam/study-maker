@@ -14,10 +14,6 @@
   grid-row-gap: 0.5rem;
 }
 
-label {
-  font-size: 15px;
-}
-
 .form > div {
   display: grid;
   grid-gap: 5px;
@@ -28,27 +24,6 @@ label {
   border-radius: 5px;
   padding: 10px 80px 10px 8px;
   color: #000;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 13px;
-}
-
-.noError {
-  opacity: 0;
-  font-size: 13px;
-}
-
-.doubleCheck {
-  border: 0.7px solid #3c91e6;
-  border-radius: 3px;
-  margin-left: 5px;
-  background: none;
-  font-size: 12px;
-  padding: 10px 5px;
-  color: #3c91e6;
-  cursor: pointer;
 }
 
 #buttons {
