@@ -24,7 +24,14 @@ const SignIn = () => {
         "Content-Type": "application/json",
       },
     };
-    fetch("/api/sign-in", signin_info).then((window.location.href = "/"));
+    fetch("/api/sign-in", signin_info)
+      .then(console.log(signinInfo))
+      .then(console.log(signin_info))
+      .then(function (response) {
+        console.log(response);
+      })
+      .then(alert("로그인이 완료되었습니다."));
+    // .then((window.location.href = "/"));
   };
 
   const onChangeEmail = useCallback((e) => {

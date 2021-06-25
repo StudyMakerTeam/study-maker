@@ -1,17 +1,17 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './signUp.module.css';
+import React, { useCallback, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styles from "./signUp.module.css";
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
-  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
+  const [mobile, setMobile] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
-  const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -22,20 +22,47 @@ const SignUp = () => {
       name: name,
     };
     const signup_info = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(signupInfo),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
-    fetch('/api/sign-up', signup_info)
+    fetch("/api/sign-up", signup_info)
       .then(console.log(signupInfo))
       .then(console.log(signup_info))
       .then(function (response) {
         console.log(response);
       })
-      .then(alert('회원가입이 완료되었습니다.'));
+      .then(alert("회원가입이 완료되었습니다."));
     // .then((window.location.href = "/"));
+  };
+
+  const onDoubleCheck = (e) => {
+    e.preventDefault();
+    const signUpEmail = {
+      email: email,
+    };
+    const signup_email = {
+      method: "GET",
+      body: JSON.stringify(signUpEmail),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch("/api/check-email", signup_email)
+      .then(console.log(signUpEmail))
+      .then(console.log(signup_email))
+      .then((response) => {
+        console.log(response);
+      })
+      .then((response) => {
+        if (response.json() == true) {
+          alert("중복된 이메일입니다.");
+        } else {
+          alert("사용가능한 이메일입니다.");
+        }
+      });
   };
 
   const onChangeEmail = useCallback((e) => {
@@ -73,11 +100,11 @@ const SignUp = () => {
 
   useEffect(() => {
     if (mobile.length === 10) {
-      setMobile(mobile.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+      setMobile(mobile.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     }
     if (mobile.length === 13) {
       setMobile(
-        mobile.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
+        mobile.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
       );
     }
   }, [mobile]);
@@ -104,7 +131,9 @@ const SignUp = () => {
                 required
                 onChange={onChangeEmail}
               />
-              <button className={styles.doubleCheck}>중복확인</button>
+              <button className={styles.doubleCheck} onClick={onDoubleCheck}>
+                중복확인
+              </button>
               {emailError ? (
                 <div className={styles.errorMessage}>
                   올바르지 않은 이메일 형식입니다.
