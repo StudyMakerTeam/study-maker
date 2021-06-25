@@ -13,8 +13,27 @@ const SignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    alert("회원가입이 완료되었습니다.");
-    window.location.href = "/";
+    const signupInfo = {
+      email: email,
+      password: password,
+      nickname: useState.nickname,
+      name: "111",
+    };
+    const signup_info = {
+      method: "POST",
+      body: JSON.stringify(signupInfo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch("/api/sign-up", signup_info)
+      .then(console.log(signupInfo))
+      .then(console.log(signup_info))
+      .then(function (response) {
+        console.log(response);
+      })
+      .then(alert("회원가입이 완료되었습니다."));
+    // .then((window.location.href = "/"));
   };
 
   const onChangeEmail = useCallback((e) => {
@@ -54,7 +73,8 @@ const SignUp = () => {
   }, [mobile]);
 
   const isEmail = (email) => {
-    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    const regExp =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(email);
   };
 

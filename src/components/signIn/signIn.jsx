@@ -13,7 +13,18 @@ const SignIn = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    const signinInfo = {
+      email: email,
+      password: password,
+    };
+    const signin_info = {
+      method: "POST",
+      body: JSON.stringify(signinInfo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch("/api/sign-in", signin_info).then((window.location.href = "/"));
   };
 
   const onChangeEmail = useCallback((e) => {
