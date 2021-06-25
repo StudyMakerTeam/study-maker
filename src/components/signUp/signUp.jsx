@@ -1,38 +1,40 @@
-import React, { useCallback, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./signUp.module.css";
+import React, { useCallback, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './signUp.module.css';
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
+  const [mobile, setMobile] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
+  const [name, setName] = useState('');
+  const [nickname, setNickname] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
     const signupInfo = {
       email: email,
       password: password,
-      nickname: useState.nickname,
-      name: "111",
+      nickname: nickname,
+      name: name,
     };
     const signup_info = {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(signupInfo),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
-    fetch("/api/sign-up", signup_info)
+    fetch('/api/sign-up', signup_info)
       .then(console.log(signupInfo))
       .then(console.log(signup_info))
       .then(function (response) {
         console.log(response);
       })
-      .then(alert("회원가입이 완료되었습니다."));
+      .then(alert('회원가입이 완료되었습니다.'));
     // .then((window.location.href = "/"));
   };
 
@@ -61,13 +63,21 @@ const SignUp = () => {
     }
   }, []);
 
+  const onChangeName = useCallback((e) => {
+    setName(e.target.value);
+  }, []);
+
+  const onChangeNickname = useCallback((e) => {
+    setNickname(e.target.value);
+  }, []);
+
   useEffect(() => {
     if (mobile.length === 10) {
-      setMobile(mobile.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+      setMobile(mobile.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
     }
     if (mobile.length === 13) {
       setMobile(
-        mobile.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+        mobile.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
       );
     }
   }, [mobile]);
@@ -77,17 +87,6 @@ const SignUp = () => {
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(email);
   };
-
-  const useInput = (initValue = null) => {
-    const [value, setter] = useState(initValue);
-    const handler = useCallback((e) => {
-      setter(e.target.value);
-    }, []);
-    return [value, handler];
-  };
-
-  const [name, onChangeName] = useInput("");
-  const [nickname, onChangeNickname] = useInput("");
 
   return (
     <>
