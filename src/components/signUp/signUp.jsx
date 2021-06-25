@@ -50,19 +50,19 @@ const SignUp = () => {
         "Content-Type": "application/json",
       },
     };
-    fetch("/api/check-email", signup_email)
+    fetch("/api/check-email")
       .then(console.log(signUpEmail))
       .then(console.log(signup_email))
       .then((response) => {
         console.log(response);
-      })
-      .then((response) => {
-        if (response.json() == true) {
-          alert("중복된 이메일입니다.");
-        } else {
-          alert("사용가능한 이메일입니다.");
-        }
       });
+    // .then((response) => {
+    //   if (response.json() == true) {
+    //     alert("중복된 이메일입니다.");
+    //   } else {
+    //     alert("사용가능한 이메일입니다.");
+    //   }
+    // });
   };
 
   const onChangeEmail = useCallback((e) => {
