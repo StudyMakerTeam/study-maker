@@ -44,17 +44,25 @@ const SignUp = () => {
       email: email,
     };
     const signup_email = {
-      method: "GET",
+      method: "POST",
       body: JSON.stringify(signUpEmail),
       headers: {
         "Content-Type": "application/json",
       },
     };
-    fetch("/api/check-email")
+    fetch("/api/check-email", signup_email)
       .then(console.log(signUpEmail))
       .then(console.log(signup_email))
       .then((response) => {
         console.log(response);
+        if (response.status === true) {
+          alert("사용 가능한 이메일입니다.");
+          this.setState({ email: true });
+        } else if (response.status === false) {
+          alert("이미 사용중인 아이디 입니다.");
+        } else {
+          alert("사용 불가한 아이디입니다.");
+        }
       });
     // .then((response) => {
     //   if (response.json() == true) {
