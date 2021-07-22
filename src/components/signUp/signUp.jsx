@@ -1,5 +1,6 @@
-import React, { useCallback, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useCallback, useState, useEffect, useReducer } from "react";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./signUp.module.css";
 
 const SignUp = () => {
@@ -13,30 +14,30 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const onSubmit = (e) => {
+  //signUp api 통신 부분
+  const [error, setError] = useState(null);
+  const history = useHistory();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const signupInfo = {
-      email: email,
-      password: password,
-      nickname: nickname,
-      name: name,
-    };
-    const signup_info = {
-      method: "POST",
-      body: JSON.stringify(signupInfo),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    fetch("/api/sign-up", signup_info)
-      .then(console.log(signupInfo))
-      .then(console.log(signup_info))
-      .then(function (response) {
-        console.log(response);
-      })
-      .then(alert("회원가입이 완료되었습니다."));
-    // .then((window.location.href = "/"));
+    try {
+      const response = await axios.post("/api/sign-up", {
+        email: email,
+        password: password,
+        nickname: nickname,
+        name: name,
+      });
+      console.log(response);
+    } catch (e) {
+      setError(e);
+    }
   };
+
+  if (error) {
+    alert("에러가 발생했습니다");
+    history.push("/signup");
+  }
+  //
 
   const onDoubleCheck = (e) => {
     e.preventDefault();
@@ -55,13 +56,13 @@ const SignUp = () => {
       .then(console.log(signup_email))
       .then((response) => {
         console.log(response);
-        if (response.status === true) {
+        if (response.body === false) {
           alert("사용 가능한 이메일입니다.");
-          this.setState({ email: true });
-        } else if (response.status === false) {
-          alert("이미 사용중인 아이디 입니다.");
+          // this.setState({ email: true });
+        } else if (response.body === true) {
+          alert("이미 사용중인 이메일입니다.");
         } else {
-          alert("사용 불가한 아이디입니다.");
+          alert("사용 불가한 이메일입니다.");
         }
       });
     // .then((response) => {

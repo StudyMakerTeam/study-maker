@@ -1,46 +1,74 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import styles from "./signIn.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Modal from "../modal/modal.jsx";
 import FindEmail from "../signIn/findEmail";
 import FindPassword from "./findPassword";
+import axios from "axios";
+
+// signIn api 통신 부분(useReducer 활용)
+const signInInitialState = {
+  loading: null,
+  error: null,
+};
+
+function signInReducer(state = signInInitialState, action) {
+  switch (action.type) {
+    case "SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+    case "FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+}
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // modal 부분(이메일, 비밀번호 찾기 팝업)
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
+  //
 
-  const onSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [state, dispatch] = useReducer(signInReducer, signInInitialState);
+  const history = useHistory();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const signinInfo = {
-      email: email,
-      password: password,
-    };
-    const signin_info = {
-      method: "POST",
-      body: JSON.stringify(signinInfo),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    fetch("/api/sign-in", signin_info)
-      .then(console.log(signinInfo))
-      .then(console.log(signin_info))
-      .then(function (response) {
-        console.log(response);
-      })
-      .then(alert("로그인이 완료되었습니다."));
-    // .then((window.location.href = "/"));
+    try {
+      const response = await axios.post("/api/sign-in", {
+        email: email,
+        password: password,
+      });
+      dispatch({ type: "SUCCESS", data: response.data });
+      history.push("/");
+    } catch (e) {
+      dispatch({ type: "FAILURE", error: e });
+    }
   };
 
-  const onChangeEmail = useCallback((e) => {
-    setEmail(e.target.value);
-  }, []);
+  if (state.error) {
+    alert("에러가 발생했습니다");
+    history.push("/signin");
+  }
+  //
 
-  const onChangePassword = useCallback((e) => {
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
     setPassword(e.target.value);
-  }, []);
+  };
 
   const openEmailModal = () => {
     setEmailModalOpen(true);
