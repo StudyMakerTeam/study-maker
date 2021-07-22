@@ -28,6 +28,7 @@ const SignUp = () => {
         name: name,
       });
       console.log(response);
+      history.push("/");
     } catch (e) {
       setError(e);
     }
