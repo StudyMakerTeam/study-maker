@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useCallback, useState, useEffect, useReducer } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./signUp.module.css";
 
@@ -18,10 +18,13 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const history = useHistory();
 
+  const domain =
+    "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/sign-up";
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/sign-up", {
+      const response = await axios.post(domain, {
         email: email,
         password: password,
         nickname: nickname,
