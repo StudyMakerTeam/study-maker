@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./header.module.css";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { MdPerson } from "react-icons/md";
 
 const Header = () => {
   return (
@@ -12,9 +14,11 @@ const Header = () => {
         <ul className={styles.navList}>
           <li className={styles.navListItem}>스터디 목록</li>
           <li className={styles.navListItem}>스터디 만들기</li>
-          <Link to="/signin">
-            <li className={styles.navListItem}>로그인</li>
-          </Link>
+          <li>
+            <ProfileBlock>
+              <MdPerson />
+            </ProfileBlock>
+          </li>
         </ul>
       </nav>
     </header>
@@ -22,3 +26,13 @@ const Header = () => {
 };
 
 export default Header;
+
+const ProfileBlock = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #767676;
+  cursor: pointer;
+`;
