@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useReducer, useState } from "react";
 import styles from "./signIn.module.css";
 import { Link, useHistory } from "react-router-dom";
 import Modal from "../modal/modal.jsx";
@@ -32,20 +32,23 @@ function signInReducer(state = signInInitialState, action) {
 }
 
 const SignIn = () => {
-  // modal 부분(이메일, 비밀번호 찾기 팝업)
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
-  //
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, dispatch] = useReducer(signInReducer, signInInitialState);
   const history = useHistory();
 
+  console.log(history);
+
+  const domain =
+    "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/sign-in";
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/sign-in", {
+      const response = await axios.post(domain, {
         email: email,
         password: password,
       });
