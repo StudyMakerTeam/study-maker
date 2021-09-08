@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSmallInput = styled.input`
-  width: 6rem;
+  width: 100%;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
   font: inherit;

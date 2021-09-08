@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSelect = styled.select`
+  width: 100%;
   background-color: white;
   border: 1px solid #bdbdbd;
   border-radius: 5px;

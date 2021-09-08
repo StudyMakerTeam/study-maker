@@ -8,7 +8,7 @@ const StyledInput = styled.textarea`
   border-radius: 5px;
   display: inline-block;
   font: inherit;
-  padding: 0.5em 1em;
+  padding: 0.9em;
   resize: none;
 `;
 

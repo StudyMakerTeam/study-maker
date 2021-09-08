@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDateInput = styled.input`
-  width: 10rem;
+  width: 100%;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
   display: inline-block;

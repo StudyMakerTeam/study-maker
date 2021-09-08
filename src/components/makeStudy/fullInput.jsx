@@ -7,7 +7,7 @@ const StyledInput = styled.input`
   border-radius: 5px;
   display: inline-block;
   font: inherit;
-  padding: 0.5em 3.5em 0.5em 1em;
+  padding: 0.8em;
 `;
 
 const FullInput = ({ text }) => {
