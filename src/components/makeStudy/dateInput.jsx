@@ -8,7 +8,7 @@ const StyledDateInput = styled.input`
   display: inline-block;
   font: inherit;
   padding: 0.45em;
-
+  /* 
   &::before {
     content: attr(data-placeholder);
     width: 100%;
@@ -16,7 +16,7 @@ const StyledDateInput = styled.input`
   &:focus::before,
   &:valid::before {
     display: none;
-  }
+  } */
 `;
 
 const DateInput = ({ text }) => {
