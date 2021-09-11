@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledDateInput = styled.input`
@@ -19,13 +19,24 @@ const StyledDateInput = styled.input`
   } */
 `;
 
-const DateInput = ({ text }) => {
+const DateInput = (props) => {
+  const [date, setDate] = useState('');
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setDate({
+      [name]: value,
+    });
+    props.onChange(date);
+  };
+
   return (
     <StyledDateInput
       type="date"
-      data-placeholder={text}
+      data-placeholder={props.text}
       required
       aria-required="true"
+      onChange={onChange}
     />
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledSelect = styled.select`
@@ -27,12 +27,22 @@ const StyledSelect = styled.select`
   background-repeat: no-repeat;
 `;
 
-const DropDownList = ({ name, options }) => {
+const DropDownList = (props) => {
+  const [choice, setChoice] = useState('');
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setChoice({
+      [name]: value,
+    });
+    props.onChange(choice);
+  };
+
   return (
     <>
-      <StyledSelect required>
-        <option value={name}>{name}</option>
-        {options.map((option) => (
+      <StyledSelect required onChange={onChange}>
+        <option value={props.name}>{props.name}</option>
+        {props.options.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
