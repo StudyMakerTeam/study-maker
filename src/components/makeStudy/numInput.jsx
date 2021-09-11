@@ -15,13 +15,15 @@ const NumInput = (props) => {
   const onChange = (e) => {
     const { name, value } = e.target;
     setInput({
-      [name]: value,
+      [name]: Number(value),
     });
     props.onChange(input);
   };
 
   return (
     <StyledNumInput
+      required
+      name={props.name}
       type="number"
       min="1"
       onChange={onChange}

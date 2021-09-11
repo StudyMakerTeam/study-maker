@@ -32,6 +32,7 @@ const DateInput = (props) => {
 
   return (
     <StyledDateInput
+      name={props.name}
       type="date"
       data-placeholder={props.text}
       required

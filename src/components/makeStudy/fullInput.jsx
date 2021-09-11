@@ -22,7 +22,12 @@ const FullInput = (props) => {
   };
 
   return (
-    <StyledInput onChange={onChange} placeholder={props.text}></StyledInput>
+    <StyledInput
+      required
+      name={props.name}
+      onChange={onChange}
+      placeholder={props.text}
+    ></StyledInput>
   );
 };
 

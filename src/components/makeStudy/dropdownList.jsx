@@ -40,8 +40,8 @@ const DropDownList = (props) => {
 
   return (
     <>
-      <StyledSelect required onChange={onChange}>
-        <option value={props.name}>{props.name}</option>
+      <StyledSelect required name={props.name} onChange={onChange}>
+        <option value={props.optionName}>{props.optionName}</option>
         {props.options.map((option) => (
           <option key={option} value={option}>
             {option}
