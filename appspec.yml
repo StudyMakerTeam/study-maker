@@ -1,0 +1,5 @@
+version: 0.0
+os: ubuntu
+files:
+  - source: /
+    destination: /home/ec2-user/build/
