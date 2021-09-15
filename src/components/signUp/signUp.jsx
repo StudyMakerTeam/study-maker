@@ -19,12 +19,12 @@ const SignUp = () => {
   const history = useHistory();
 
   const domain =
-    "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/sign-up";
+    "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/auth";
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(domain, {
+      const response = await axios.post(`${domain}/sign-up`, {
         email: email,
         password: password,
         nickname: nickname,
@@ -55,7 +55,7 @@ const SignUp = () => {
         "Content-Type": "application/json",
       },
     };
-    fetch("/api/check-email", signup_email)
+    fetch(`${domain}/check-email`, signup_email)
       .then(console.log(signUpEmail))
       .then(console.log(signup_email))
       .then((response) => {
@@ -66,16 +66,9 @@ const SignUp = () => {
         } else if (response.body === true) {
           alert("이미 사용중인 이메일입니다.");
         } else {
-          alert("사용 불가한 이메일입니다.");
+          alert("에러가 발생했습니다.");
         }
       });
-    // .then((response) => {
-    //   if (response.json() == true) {
-    //     alert("중복된 이메일입니다.");
-    //   } else {
-    //     alert("사용가능한 이메일입니다.");
-    //   }
-    // });
   };
 
   const onChangeEmail = useCallback((e) => {
