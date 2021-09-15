@@ -1,25 +1,35 @@
-version: 0.1
 
+version: 0.2
 phases:
-  install:
-    commands:
-          - echo installing nodejs...
-          - curl -sL https://deb.nodesource.com/setup_12.x | bash -
-          - apt-get install -y nodejs
-          - echo installing yarn...
-          - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-          - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc.apt.sources.list.d/yarn.list
-          - apt install --no-install-recommends yarn
-  pre-build:
-    commands:
-          - echo inntalling dependencies...
-          - npm install
-  build:
-    commands:
-          - echo building...
-          - npm run build
+    install:
+        runtime-versions:
+            # 런타임은 node12로 명시하면 자동으로 환경을 세팅해줍니다.
+            nodejs: 12
+        commands:
+            # yarn을 사용
+            - "npm install yarn -g"
+    pre_build:
+        commands:
+            # 기존 배포 빌드 백업
+            - "echo Copying Old File..."
+            - aws s3 sync s3://"$bucket_name"/  s3://"$backup_bucket_name"/  --delete  --source-region ap-northeast-2 --region ap-northeast-2
+            # 환경파일 .env 파일 생성
+            - echo -e "\nSTAGE="$build_stage"" >> .env
+            - echo -e "\nGENERATE_SOURCEMAP=false" >> .env
+            - cat .env
+            - yarn
+    build:
+        commands:
+            - yarn build
+    post_build:
+        commands:
+            # s3에 배포하기 위한 수행내용을 위한 buildspec_deploy.yml을 아티팩트에 포함
+            - cp buildspec_deploy.yml build/
+            - cd build
+            - ls
+#아티펙트 디렉토리 지정. react 기본으로 빌드되면 build 디렉토리로 빌드됨            
 artifacts:
     files:
         - "**/*"
-    discard-paths: no
     base-directory: build
+
