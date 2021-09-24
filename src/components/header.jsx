@@ -53,8 +53,6 @@ const Header = () => {
   );
 };
 
-export default Header;
-
 const HeaderBlock = styled.div`
   .header {
     position: fixed;
@@ -147,16 +145,4 @@ const ProfileBlock = styled.div`
   cursor: pointer;
 `;
 
-/* .profile_box::after { */
-/* bottom: 100%; 말풍선꼭지위치 위아래 */
-/* left: 10%; 말풍선위치 좌우 */
-/* border: 1px solid #dee2e6; */
-/* content: ""; */
-/* height: 0; */
-/* width: 0; */
-/* position: absolute; */
-/* pointer-events: none; */
-/* border-color: transparent transparent white transparent; 말풍선 꼭지방향 */
-/* border-width: 8px; 말풍선 꼭지 사이즈 */
-/* margin-left: 10px; 말풍선 상세위치 조정 */
-/* } */
+export default Header;
