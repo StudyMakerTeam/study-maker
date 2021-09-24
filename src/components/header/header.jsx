@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { MdPerson } from "react-icons/md";
-import ProfileDropDown from "./profileDropDown";
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <HeaderBlock>
       <header className="header">
@@ -15,11 +16,35 @@ const Header = () => {
           <ul className="navList">
             <li className="navListItem">스터디 목록</li>
             <li className="navListItem">스터디 만들기</li>
-            <li>
-              <ProfileBlock className="profile">
+            <li className="navListItemProfile">
+              <ProfileBlock className="profileImg">
                 <MdPerson />
               </ProfileBlock>
-              <ProfileDropDown className="profile-drop_down" />
+              {isLoggedIn ? (
+                <ul className="profile-drop_down-list">
+                  <li className="profile-drop_down">
+                    <Link to="/signIn">로그인</Link>
+                  </li>
+                  <li className="profile-drop_down">
+                    <Link to="/signUp">회원가입</Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="profile-drop_down-list">
+                  <li className="profile-drop_down">
+                    <Link to="/me">마이페이지</Link>
+                  </li>
+                  <li className="profile-drop_down">
+                    <Link to="/editPassword">비밀번호 변경</Link>
+                  </li>
+                  <li className="profile-drop_down">
+                    <Link to="/deleteAccount">탈퇴하기</Link>
+                  </li>
+                  <li className="profile-drop_down">
+                    <Link to="/signOut">로그아웃</Link>
+                  </li>
+                </ul>
+              )}
             </li>
           </ul>
         </nav>
@@ -27,7 +52,6 @@ const Header = () => {
     </HeaderBlock>
   );
 };
-
 
 export default Header;
 
@@ -71,7 +95,7 @@ const HeaderBlock = styled.div`
     align-items: center;
     font-size: 1rem;
     font-weight: 500;
-    color: #767676;
+    color: #4f4f4f;
     cursor: pointer;
   }
 
@@ -81,12 +105,35 @@ const HeaderBlock = styled.div`
   }
 
   .navListItem:hover,
+  .profileImg:hover,
   .navListItem:active {
     color: #3c91e6;
   }
 
-  .profile:hover .profile-drop_down {
+  .profile-drop_down-list {
+    display: none;
+  }
+  .navListItemProfile:hover .profile-drop_down-list {
     display: block;
+  }
+  .profile-drop_down-list {
+    min-width: 80px;
+    z-index: 1;
+    box-sizing: border-box;
+    top: 50px;
+    right: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    position: absolute;
+    background-color: white;
+  }
+  .profile-drop_down a {
+    color: #767676;
+  }
+
+  .profile-drop_down a:hover {
+    color: #3c91e6;
   }
 `;
 
@@ -96,6 +143,20 @@ const ProfileBlock = styled.div`
   align-items: center;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #767676;
+  color: #4f4f4f;
   cursor: pointer;
 `;
+
+/* .profile_box::after { */
+/* bottom: 100%; 말풍선꼭지위치 위아래 */
+/* left: 10%; 말풍선위치 좌우 */
+/* border: 1px solid #dee2e6; */
+/* content: ""; */
+/* height: 0; */
+/* width: 0; */
+/* position: absolute; */
+/* pointer-events: none; */
+/* border-color: transparent transparent white transparent; 말풍선 꼭지방향 */
+/* border-width: 8px; 말풍선 꼭지 사이즈 */
+/* margin-left: 10px; 말풍선 상세위치 조정 */
+/* } */
