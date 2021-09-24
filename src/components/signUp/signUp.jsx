@@ -14,8 +14,7 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
-  //signUp api 통신 부분
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const domain =
@@ -41,28 +40,46 @@ const SignUp = () => {
     alert("에러가 발생했습니다");
     history.push("/signup");
   }
-  //
 
-  const onDoubleCheck = (e) => {
+  const onDoubleCheck = async (e) => {
     e.preventDefault();
-    const signUpEmail = {
-      email: email,
-    };
     const signup_email = {
       method: "POST",
-      body: JSON.stringify(signUpEmail),
+      body: JSON.stringify(email),
       headers: {
         "Content-Type": "application/json",
       },
     };
     fetch(`${domain}/check-email`, signup_email)
-      .then(console.log(signUpEmail))
+      .then(console.log(email))
       .then(console.log(signup_email))
       .then((response) => {
         console.log(response);
         if (response.body === false) {
           alert("사용 가능한 이메일입니다.");
-          // this.setState({ email: true });
+        } else if (response.body === true) {
+          alert("이미 사용중인 이메일입니다.");
+        } else {
+          alert("에러가 발생했습니다.");
+        }
+      });
+  };
+  const onDoubleCheckNick = async (e) => {
+    e.preventDefault();
+    const signup_nick = {
+      method: "POST",
+      body: JSON.stringify(nickname),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(`${domain}/check-nickname`, signup_nick)
+      .then(console.log(nickname))
+      .then(console.log(signup_nick))
+      .then((response) => {
+        console.log(response);
+        if (response.body === false) {
+          alert("사용 가능한 이메일입니다.");
         } else if (response.body === true) {
           alert("이미 사용중인 이메일입니다.");
         } else {
@@ -117,7 +134,7 @@ const SignUp = () => {
 
   const isEmail = (email) => {
     const regExp =
-      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(email);
   };
 
@@ -222,7 +239,12 @@ const SignUp = () => {
                 required
                 onChange={onChangeNickname}
               />
-              <button className={styles.doubleCheck}>중복확인</button>
+              <button
+                className={styles.doubleCheck}
+                onClick={onDoubleCheckNick}
+              >
+                중복확인
+              </button>
               <div className={styles.noError}>no error</div>
             </div>
           </div>
