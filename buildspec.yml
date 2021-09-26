@@ -9,6 +9,9 @@ phases:
        - npm run build
        - npm run export
  # follow npm command declared in package.json file.
+ 
+ 
+ 
 artifacts: # Specifies the output artifacts of CodeBuild stage.
    files:     - '**/*'
    base-directory: 'dist'   # by setting base-directory and files like this, all files in the dist directory become output artifacts.
