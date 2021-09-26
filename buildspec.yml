@@ -1,15 +1,22 @@
-# buildspec.yml
-version: 0.1 # arbitrary version name for management
+version: 0.2
 phases:
-   install:
-     commands:
-       - npm install
-   build:
-     commands:
-       - npm run build
-       - npm run export
- # follow npm command declared in package.json file
-artifacts: # Specifies the output artifacts of CodeBuild stage.
-   files:     
-      - '**/*'
-   base-directory: 'dist'   # by setting base-directory and files like this, all files in the dist directory become output artifacts.
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the dist folder
+      - npm run-script build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+artifacts:
+  files:
+    - index.js
+    - dist/**/*
+    - request-map.js
+    - credentials.json
+    - node_modules/**/*
