@@ -7,19 +7,19 @@ const SignUp = () => {
   const [error, setError] = useState(false);
   const history = useHistory();
 
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
   const [inputs, setInputs] = useState({
     email: "",
+    password: "",
+    passwordCheck: "",
     username: "",
     nickname: "",
     mobile: "",
   });
 
-  const { email, username, nickname, mobile } = inputs;
+  const { email, password, passwordCheck, username, nickname, mobile } = inputs;
 
   const isEmail = (email) => {
     const regExp =
@@ -27,26 +27,29 @@ const SignUp = () => {
     return regExp.test(email);
   };
 
-  const setInputsFunc = (name, value) => {
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
-
   const onChange = (e) => {
     const { name, value } = e.target;
     const regex = /^[0-9\b -]{0,13}$/;
 
     if (name === "email") {
-      setInputsFunc(name, value);
       setEmailError(!isEmail(value));
     } else if (name === "mobile") {
       if (regex.test(value)) {
-        setInputsFunc(name, value);
+        setInputs({
+          ...inputs,
+          [name]: value,
+        });
       }
-    } else {
-      setInputsFunc(name, value);
+    } else if (name === "password") {
+      setPasswordLengthError(value.length < 8);
+    } else if (name === "passwordCheck") {
+      setPasswordError(value !== password);
+    }
+    if (name !== "mobile") {
+      setInputs({
+        ...inputs,
+        [name]: value,
+      });
     }
   };
 
@@ -66,19 +69,6 @@ const SignUp = () => {
       });
     }
   }, [mobile]);
-
-  const onChangePassword = useCallback((e) => {
-    setPasswordLengthError(e.target.value.length < 8);
-    setPassword(e.target.value);
-  }, []);
-
-  const onChangePasswordCheck = useCallback(
-    (e) => {
-      setPasswordError(e.target.value !== password);
-      setPasswordCheck(e.target.value);
-    },
-    [password]
-  );
 
   const domain =
     "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/auth";
@@ -106,34 +96,48 @@ const SignUp = () => {
 
   const onDoubleCheck = async (e) => {
     e.preventDefault();
-    const { value } = e.target;
+    const { name, value } = e.target;
     let inAlert = "";
-    if (value === email) {
-      inAlert = "이메일";
-    } else {
-      inAlert = "닉네임";
-    }
-    const signUpData = {
-      method: "POST",
-      body: JSON.stringify(value),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    fetch(`${domain}/check-nickname`, signUpData)
-      .then(console.log(value))
-      .then(console.log(signUpData))
-      .then((response) => {
+    if (name === "email") {
+      // inAlert = "이메일";
+      try {
+        const response = await axios.post(`${domain}/check-${name}`, {
+          email: {value},
+        });
         console.log(response);
-        if (response.body === false) {
-          alert(`사용 가능한 ${inAlert}입니다.`);
-        } else if (response.body === true) {
-          alert(`이미 사용중인 ${inAlert}입니다.`);
-        } else {
-          alert("에러가 발생했습니다.");
-        }
-      });
-  };
+        history.push("/signup");
+      } catch (e) {
+        setError(e);
+        alert("에러가 발생했습니다.");
+      }
+    } else {
+      // inAlert = "닉네임";
+      }try {
+        const response = await axios.post(`${domain}/check-${name}`, {
+          nickname: {value},
+        });
+        console.log(response);
+        history.push("/signup");
+      } catch (e) {
+        setError(e);
+        alert("에러가 발생했습니다.");
+      }
+    };
+    // TODO: response.body 값에 따른 alert 설정 필요함.
+
+    // fetch(`${domain}/check-nickname`, signUpData)
+    //   .then(console.log(value))
+    //   .then(console.log(signUpData))
+    //   .then((response) => {
+    //     console.log(response);
+    //     if (response.body === false) {
+    //       alert(`사용 가능한 ${inAlert}입니다.`);
+    //     } else if (response.body === true) {
+    //       alert(`이미 사용중인 ${inAlert}입니다.`);
+    //     } else {
+    //       alert("에러가 발생했습니다.");
+    //     }
+    //   });
 
   return (
     <>
@@ -141,7 +145,7 @@ const SignUp = () => {
         <h2 className={styles.title}>회원가입</h2>
         <form onSubmit={onSubmit} className={styles.form} action="index.html">
           <div>
-            <label htmlFor="user-email">이메일</label>
+            <label htmlFor="email">이메일</label>
             <div>
               <input
                 className={styles.inputSmall}
@@ -155,6 +159,7 @@ const SignUp = () => {
                 className={styles.doubleCheck}
                 onClick={onDoubleCheck}
                 value={email}
+                name="email"
               >
                 중복확인
               </button>
@@ -168,15 +173,15 @@ const SignUp = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="user-password">비밀번호</label>
+            <label htmlFor="password">비밀번호</label>
             <input
               className={styles.input}
               type="password"
               placeholder="비밀번호"
-              name="user-password"
+              name="password"
               value={password}
               required
-              onChange={onChangePassword}
+              onChange={onChange}
             />
             {passwordLengthError ? (
               <div className={styles.errorMessage}>
@@ -187,15 +192,15 @@ const SignUp = () => {
             )}
           </div>
           <div>
-            <label htmlFor="user-password-check">비밀번호 확인</label>
+            <label htmlFor="passwordCheck">비밀번호 확인</label>
             <input
               className={styles.input}
               type="password"
               placeholder="비밀번호 확인"
-              name="user-password-check"
+              name="passwordCheck"
               value={passwordCheck}
               required
-              onChange={onChangePasswordCheck}
+              onChange={onChange}
             />
             {passwordError ? (
               <div className={styles.errorMessage}>
@@ -206,7 +211,7 @@ const SignUp = () => {
             )}
           </div>
           <div>
-            <label htmlFor="user-mobile">휴대전화</label>
+            <label htmlFor="mobile">휴대전화</label>
             <input
               className={styles.input}
               placeholder="전화번호 입력('-' 제외)"
@@ -218,7 +223,7 @@ const SignUp = () => {
             <div className={styles.noError}>no error</div>
           </div>
           <div>
-            <label htmlFor="user-name">이름</label>
+            <label htmlFor="username">이름</label>
             <input
               className={styles.input}
               placeholder="이름(본명)"
@@ -230,7 +235,7 @@ const SignUp = () => {
             <div className={styles.noError}>no error</div>
           </div>
           <div>
-            <label htmlFor="user-nickname">닉네임</label>
+            <label htmlFor="nickname">닉네임</label>
             <div>
               <input
                 className={styles.inputSmall}
@@ -244,6 +249,7 @@ const SignUp = () => {
                 className={styles.doubleCheck}
                 onClick={onDoubleCheck}
                 value={nickname}
+                name="nickname"
               >
                 중복확인
               </button>
@@ -256,7 +262,7 @@ const SignUp = () => {
             </Link>
             <button
               id={styles.signUpButton}
-              htmltype="submt"
+              htmltype="submit"
               onSubmit={onSubmit}
             >
               가입하기
