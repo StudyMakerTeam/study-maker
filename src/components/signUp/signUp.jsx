@@ -106,7 +106,7 @@ const SignUp = () => {
       setError(e);
     }
   };
-    // TODO: response.body 값에 따른 alert 설정 필요함.
+    // TODO: response.body 값에 따른 alert 설정 필요함. -> axios에서는 body가 아니라 data로 적으면 됨.
 
   if (error) {
     alert("에러가 발생했습니다");
