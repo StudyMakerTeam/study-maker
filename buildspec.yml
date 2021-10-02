@@ -1,27 +1,47 @@
 version: 0.2
+
 phases:
-  pre_build:
+  install:
+    runtime-versions:
+      nodejs: 12
     commands:
-      - echo Installing source NPM dependencies...
       - npm install
-  build:
-    commands:
-      - echo Build started on `date`
-      - echo Compiling the dist folder
-      - npm run-script build
-  post_build:
-    commands:
-      - echo Build completed on `date`
-# Include only the files required for your application to run.
+      - pwd
+    run-as: root
+
 artifacts:
   files:
-    - index.js
-    - dist/**/*
-    - request-map.js
-    - credentials.json
-    - node_modules/**/*
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
+    - "**/*"
+cache:
+  paths:
+    - "node_modules/**/*"
+
+
+
+# version: 0.2
+# phases:
+#   pre_build:
+#     commands:
+#       - echo Installing source NPM dependencies...
+#       - npm install
+#   build:
+#     commands:
+#       - echo Build started on `date`
+#       - echo Compiling the dist folder
+#       - npm run-script build
+#   post_build:
+#     commands:
+#       - echo Build completed on `date`
+# # Include only the files required for your application to run.
+# artifacts:
+#   files:
+#     - index.js
+#     - dist/**/*
+#     - request-map.js
+#     - credentials.json
+#     - node_modules/**/*
+#     - public/**/*
+#     - src/**/*
+#     - package.json
+#     - appspec.yml
+#     - scripts/**/*
