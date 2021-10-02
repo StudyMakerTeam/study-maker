@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./signUp.module.css";
 
@@ -89,41 +89,29 @@ const SignUp = () => {
     }
   };
 
+  const onDoubleCheck = async (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    try {
+      const response = await axios.post(`${domain}/check-${name}`, {
+        [name]: value,
+      });
+      console.log(response);
+      if(response.data === false) {
+        alert(`사용 가능한 ${name}입니다.`);
+      } else if(response.data === true) {
+        alert(`이미 사용중인 ${name}입니다.`);
+      }
+    } catch (e) {
+      setError(e);
+    }
+  };
+    // TODO: response.body 값에 따른 alert 설정 필요함.
+
   if (error) {
     alert("에러가 발생했습니다");
     history.push("/signup");
   }
-
-  const onDoubleCheck = async (e) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    let inAlert = "";
-    if (name === "email") {
-      // inAlert = "이메일";
-      try {
-        const response = await axios.post(`${domain}/check-${name}`, {
-          email: {value},
-        });
-        console.log(response);
-        history.push("/signup");
-      } catch (e) {
-        setError(e);
-        alert("에러가 발생했습니다.");
-      }
-    } else {
-      // inAlert = "닉네임";
-      }try {
-        const response = await axios.post(`${domain}/check-${name}`, {
-          nickname: {value},
-        });
-        console.log(response);
-        history.push("/signup");
-      } catch (e) {
-        setError(e);
-        alert("에러가 발생했습니다.");
-      }
-    };
-    // TODO: response.body 값에 따른 alert 설정 필요함.
 
     // fetch(`${domain}/check-nickname`, signUpData)
     //   .then(console.log(value))
