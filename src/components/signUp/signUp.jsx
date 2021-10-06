@@ -80,7 +80,7 @@ const SignUp = () => {
         email: email,
         password: password,
         nickname: nickname,
-        username: username, // 서버에 username으로 설정되어 있는지 확인 필요
+        name: username, // 서버에 username으로 설정되어 있는지 확인 필요
       });
       console.log(response);
       history.push("/");
