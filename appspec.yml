@@ -29,12 +29,12 @@ files:
     destination: /home/ubuntu/build
 hooks:
   BeforeInstall:  
-    - location: /initialize.sh
+    - location: /BeforeInstall.sh
+      runas: root
+  AfterInstall:
+    - location: /scripts/after_install.sh
       runas: root
 
   ApplicationStart:
     - location: /start.sh
-      runas: root
-  ValidateService:
-    - location: /healthCheck.sh
       runas: root
