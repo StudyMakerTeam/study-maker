@@ -15,4 +15,3 @@ anytime
 MIT
 true
 
-sudo yarn run
