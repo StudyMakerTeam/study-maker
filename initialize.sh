@@ -15,5 +15,4 @@ anytime
 MIT
 true
 
-
-sudo yarn start
+sudo yarn run
