@@ -7,12 +7,10 @@ sudo apt-get install -y nodejs
 sudo npm install -g yarn
 
 sudo yarn init
- 
- 
- 
- 
- 
- 
- 
- 
- 
+stuty-maker
+1.0.0
+description
+/study-maker
+anytime
+MIT
+true
