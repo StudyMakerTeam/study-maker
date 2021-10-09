@@ -1,5 +1,6 @@
 # /start.sh
-cd /home/build
+
+cd /home/ubuntu/build
 
 sudo yarn start
 
