@@ -14,3 +14,6 @@ description
 anytime
 MIT
 true
+
+
+sudo yarn start
