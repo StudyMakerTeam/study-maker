@@ -29,12 +29,8 @@ files:
     destination: /home/ubuntu/build
 hooks:
   BeforeInstall:  
-    - location: /BeforeInstall.sh
+    - location: /initialize.sh
       runas: root
-  AfterInstall:
-    - location: /scripts/after_install.sh
-      runas: root
-
   ApplicationStart:
     - location: /start.sh
       runas: root
