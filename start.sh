@@ -1,7 +1,7 @@
 # /start.sh
-# cd /home/build
+cd /home/build
 
-# sudo yarn start
+sudo yarn start
 
 
 
