@@ -3,10 +3,10 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/build
+    destination: /home/build
 hooks:
   BeforeInstall:
-    - location: /before_install.sh
+    - location: /scripts/before_install.sh
       timeout: 300
       runas: root
       
