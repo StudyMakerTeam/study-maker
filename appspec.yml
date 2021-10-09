@@ -6,7 +6,7 @@ files:
     destination: /home/ubuntu/build
 hooks:
   BeforeInstall:
-    - location: /before_install.sh
+    - location: /BeforeInstall.sh
       timeout: 300
       runas: root
       
