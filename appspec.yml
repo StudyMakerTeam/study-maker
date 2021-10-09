@@ -34,4 +34,4 @@ hooks:
       
   ApplicationStart:
     - location: /start.sh
-      runas: ubuntu
+      runas: root
