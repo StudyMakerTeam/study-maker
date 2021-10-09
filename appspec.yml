@@ -33,5 +33,5 @@ hooks:
       runas: root
       
   ApplicationStart:
-    - location: /start.sh
+    - location: /startapp.sh
       runas: root
