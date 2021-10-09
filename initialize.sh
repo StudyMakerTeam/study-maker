@@ -7,11 +7,12 @@ sudo apt-get install -y nodejs
 sudo npm install -g yarn
 
 sudo yarn init
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
