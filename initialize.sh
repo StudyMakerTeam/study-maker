@@ -8,12 +8,12 @@ sudo npm install -g yarn
 
 cd /home/build
 
-sudo yarn init
-stuty-maker
-1.0.0
-description
-/study-maker
-anytime
-MIT
-true
+sudo yarn init -y
+# study-maker
+# 1.0.0
+# description
+# /study-maker
+# anytime
+# MIT
+# true
 
