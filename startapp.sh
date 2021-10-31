@@ -1,6 +1,7 @@
 
 cd /home/ubuntu/build
 sudo yarn
+sudo yarn init -y
 sudo yarn start
 
 
