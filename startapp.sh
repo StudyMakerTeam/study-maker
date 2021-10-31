@@ -8,7 +8,7 @@ cd $PROJECT_ROOT
 
 # 원래 node 프로세스 종료
 sudo kill -9 `ps -ef | grep 'node ./bin/www' | awk '{print $2}'`
-nohup yarn start
+nohup yarn start &
 
 
 
@@ -18,5 +18,5 @@ nohup yarn start
 
 # cd /home/ubuntu/build/src
 # sudo yarn build
-# sudo yarn start &
+# sudo yarn start
 
