@@ -1,3 +1,9 @@
+
+cd /home/ubuntu/build
+sudo yarn start
+
+
+
 # /start.sh
 
 # # nvm에 대한 환경변수를 설정하는 것임.
@@ -12,7 +18,3 @@
 # nohup npm start >/home/ubuntu/logs 2>&1 </home/ubuntu/errors &
 
 
-
-cd /home/ubuntu/build
-
-sudo yarn start
