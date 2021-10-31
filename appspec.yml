@@ -32,6 +32,6 @@ hooks:
     - location: /initialize.sh
       runas: root
       
-#   ApplicationStart:
-#     - location: /startapp.sh
-#       runas: root
+  ApplicationStart:
+    - location: /startapp.sh
+      runas: root
