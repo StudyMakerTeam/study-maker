@@ -1,71 +1,45 @@
-version: 0.2 
+# copy
 
-phases: 
-  install: 
-    runtime-versions: 
-      nodejs: 10 
-    commands: 
-      - npm install -g yarn 
-      - yarn install 
-  build: 
-    commands: 
-      - echo Build Starting on `date` Build GOGOGOG~ 
-  post_build: 
-    commands: 
-      - echo 'Build Complete' 
-      - ls -l 
-artifacts: 
-  files: 
-    - '**/*'
+version: 0.2
 
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - npm install
+      - npm install -g yarn
+      - yarn
+      - pwd
+    run-as: root
 
-
-
-
-# version: 0.2
-
-# phases:
-#   install:
-#     runtime-versions:
-#       nodejs: 12
-#     commands:
-#       - npm install
-#       - pwd
-#     run-as: root
-
-# artifacts:
-#   files:
-#     - "**/*"
-# cache:
-#   paths:
-#     - "node_modules/**/*"
+artifacts:
+  files:
+    - "**/*"
+cache:
+  paths:
+    - "node_modules/**/*"
 
 
+# version: 0.2 
 
-# version: 0.2
-# phases:
-#   pre_build:
-#     commands:
-#       - echo Installing source NPM dependencies...
-#       - npm install
-#   build:
-#     commands:
-#       - echo Build started on `date`
-#       - echo Compiling the dist folder
-#       - npm run-script build
-#   post_build:
-#     commands:
-#       - echo Build completed on `date`
-# # Include only the files required for your application to run.
-# artifacts:
-#   files:
-#     - index.js
-#     - dist/**/*
-#     - request-map.js
-#     - credentials.json
-#     - node_modules/**/*
-#     - public/**/*
-#     - src/**/*
-#     - package.json
-#     - appspec.yml
-#     - scripts/**/*
+# phases: 
+#   install: 
+#     runtime-versions: 
+#       nodejs: 12 
+#     commands: 
+#       - npm install -g yarn 
+#       - yarn
+#   build: 
+#     commands: 
+#       - echo Build Starting on `date` Build GOGOGOG~ 
+#   post_build: 
+#     commands: 
+#       - echo 'Build Complete' 
+#       - ls -l 
+# artifacts: 
+#   files: 
+#     - '**/*'
+
+
+
