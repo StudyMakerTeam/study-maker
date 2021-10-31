@@ -6,10 +6,10 @@ sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g yarn
 # sudo npm i react-scripts
-sudo yarn
-cd /home/ubuntu/build
+# sudo yarn
+# cd /home/ubuntu/build
 
-sudo yarn init -y
+# sudo yarn init -y
 sudo yarn start
 
 # study-maker
