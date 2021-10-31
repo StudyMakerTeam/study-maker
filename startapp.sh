@@ -18,5 +18,5 @@ nohup yarn start
 
 # cd /home/ubuntu/build/src
 # sudo yarn build
-# sudo yarn start
+# sudo yarn start &
 
