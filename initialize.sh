@@ -14,10 +14,10 @@ cd /home/ubuntu/build
 sudo yarn
 
 # cd /home/ubuntu/build
-# sudo yarn init -y
+sudo yarn init -y
 
-cd /home/ubuntu/build
-sudo yarn start
+# cd /home/ubuntu/build
+# sudo yarn start
 
 
 # study-maker
