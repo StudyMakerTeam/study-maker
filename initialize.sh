@@ -11,7 +11,6 @@ sudo npm install -g yarn
 # sudo yarn init -y
 
 cd /home/ubuntu/build
-
 sudo yarn
 
 cd /home/ubuntu/build
