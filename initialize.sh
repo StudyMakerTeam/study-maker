@@ -15,7 +15,7 @@ cd /home/ubuntu/build
 sudo yarn
 
 cd /home/ubuntu/build
-
+sudo yarn init -y
 sudo yarn start
 
 # study-maker
