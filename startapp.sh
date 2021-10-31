@@ -4,6 +4,7 @@ sudo yarn
 sudo yarn init -y
 
 cd /home/ubuntu/build/src
+sudo yarn build
 sudo yarn start
 
 
