@@ -1,0 +1,45 @@
+# copy
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - npm install
+      - npm install -g yarn
+      - yarn
+      - pwd
+    run-as: root
+
+artifacts:
+  files:
+    - "**/*"
+cache:
+  paths:
+    - "node_modules/**/*"
+
+
+# version: 0.2 
+
+# phases: 
+#   install: 
+#     runtime-versions: 
+#       nodejs: 12 
+#     commands: 
+#       - npm install -g yarn 
+#       - yarn
+#   build: 
+#     commands: 
+#       - echo Build Starting on `date` Build GOGOGOG~ 
+#   post_build: 
+#     commands: 
+#       - echo 'Build Complete' 
+#       - ls -l 
+# artifacts: 
+#   files: 
+#     - '**/*'
+
+
+

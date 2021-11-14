@@ -1,0 +1,37 @@
+#/appspec.yml
+# version: 0.0
+# os: linux
+# files:
+#   - source: /
+#     destination: /home/ubuntu/build
+# hooks:
+#   BeforeInstall:
+#     - location: /BeforeInstall.sh
+#       timeout: 300
+#       runas: root
+      
+#   AfterInstall:
+#     - location: scripts/after_install.sh
+#       timeout: 1000
+#       runas: root
+
+#   ApplicationStart:
+#     - location: scripts/start_server.sh
+#       timeout: 300
+#       runas: root
+
+
+
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/build
+hooks:
+  BeforeInstall:  
+    - location: /initialize.sh
+      runas: root
+      
+  ApplicationStart:
+    - location: /startapp.sh
+      runas: root
