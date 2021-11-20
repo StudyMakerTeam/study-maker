@@ -9,7 +9,7 @@ cd /home/ubuntu/build
 # 원래 node 프로세스 종료
 sudo kill -9 `ps -ef | grep 'node ./bin/www' | awk '{print $2}'`
 sudo yarn
-sudo yarn start &
+sudo nohup yarn start &
 disown
 
 
