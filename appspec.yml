@@ -30,8 +30,8 @@ files:
 hooks:
   BeforeInstall:  
     - location: /initialize.sh
-      runas: root
+      runas: ubuntu
       
   ApplicationStart:
     - location: /startapp.sh
-      runas: root
+      runas: ubuntu
