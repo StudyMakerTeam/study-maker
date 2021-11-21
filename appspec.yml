@@ -29,14 +29,14 @@ files:
     destination: /home/ubuntu/build
 permissions:
   - object: /home/ubuntu/build
-    owner: ubuntu
-    group: ubuntu
+    owner: root
+    group: root
     mode: 755
 hooks:
   BeforeInstall:  
     - location: /initialize.sh
-      runas: ubuntu
+      runas: root
       
   ApplicationStart:
     - location: /startapp.sh
-      runas: ubuntu
+      runas: root
