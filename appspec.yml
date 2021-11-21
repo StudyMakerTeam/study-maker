@@ -31,7 +31,7 @@ permissions:
   - object: /home/ubuntu/build
     owner: root
     group: root
-    mode: 755
+    mode: 777
 hooks:
   BeforeInstall:  
     - location: /initialize.sh
