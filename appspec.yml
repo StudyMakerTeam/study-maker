@@ -27,11 +27,11 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/build
-permissions:
-  - object: /home/ubuntu/build
-    owner: root
-    group: root
-    mode: 777
+# permissions:
+#   - object: /home/ubuntu/build
+#     owner: root
+#     group: root
+#     mode: 777
 hooks:
   BeforeInstall:  
     - location: /initialize.sh
