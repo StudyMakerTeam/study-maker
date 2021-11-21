@@ -10,7 +10,7 @@ cd /home/ubuntu/build
 sudo kill -9 `ps -ef | grep 'node ./bin/www' | awk '{print $2}'`
 sudo yarn
 cd /home/ubuntu/build
-nohup sudo yarn start &
+sudo yarn start &
 disown
 
 
