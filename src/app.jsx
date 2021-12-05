@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./app.module.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { Main, SignIn, SignUp } from "./pages";
+import { Main, SignIn, SignUp, My } from "./pages";
 
 function App() {
   return (
@@ -18,6 +18,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/my">
+          <My />
         </Route>
       </Switch>
       <Footer />
