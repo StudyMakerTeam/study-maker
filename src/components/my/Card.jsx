@@ -3,11 +3,11 @@ import styled from "styled-components";
 import {HiChevronRight} from 'react-icons/hi';
 import {IoPersonCircle} from 'react-icons/io5';
 
-const Card = ({ children }) => {
+const Card = ({ name, children }) => {
     return (
         <MyCardBlock>
             <div className="titleWrapper">
-                <h4>내 정보</h4>
+                <h4>{name}</h4>
                 <RightArrowBlock>
                     <HiChevronRight />
                 </RightArrowBlock>
@@ -29,6 +29,8 @@ const MyCardBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    
+    margin-bottom: 2em;
   }
 `;
 

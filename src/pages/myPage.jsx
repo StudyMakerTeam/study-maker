@@ -8,8 +8,8 @@ import MyInfoCard from "../components/my/myInfoCard";
 const MyPage = () => {
     return (
         <MyPageBlock>
-            <MyInfoCard />
-            <MyInfoCard />
+            <MyInfoCard name={'내 정보'}/>
+            <MyStudy name={'나의 스터디'}/>
         </MyPageBlock>
     );
 };
